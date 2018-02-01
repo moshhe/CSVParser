@@ -1,0 +1,62 @@
+
+/**
+ * Checks to see which countries export which goods with loops
+ * 
+ * @monasia (your name) 
+ * @0.1.0 (a version number or a date)
+ */
+import edu.duke.*;
+import org.apache.commons.csv.*;
+
+public class WhichCountriesExport {
+    public void listExporters(CSVParser parser, String exportOfInterest){
+        //For each row in the CSV File
+        for(CSVRecord record: parser){
+            //Look at the "Exports" column
+            String export = record.get("Exports");
+            //Check if it contains exportOfInterest
+            if(export.contains(exportOfInterest)){
+                //If so, write down the "Country" from that row
+                String country = record.get("Country");
+                System.out.println(country);
+            }
+        }
+    }
+
+    public void WhoExportsCoffee(){
+        FileResource fr = new FileResource();
+        CSVParser parser = fr.getCSVParser();
+        listExporters(parser, "coffee");
+    }
+
+    public void TwoExportProducts(CSVParser parser, String export1, String export2){
+        double match = 0.0;
+        export1 = "";
+        export2 = "";
+        for (CSVRecord record: parser){
+            String exports = record.get("Exports");
+            if(exports.contains(export1)){
+                match=match+0.5;
+            }
+            if(exports.contains(export2)){
+                match=match+0.5;
+            }
+            if(match==1.0){
+                String country = record.get("Country");
+                System.out.println(country);
+
+            }
+        }
+    }
+public void numOfExporters(CSVParser parser, String exportItem){
+    for(CSVRecord record: parser){
+        String exports = record.get("Exports");
+        exportItem = "";
+        int numExports = 0;
+        if(exports.contains(exportItem)){
+            numExports = numExports+1;
+        }
+        System.out.println(numExports);
+        }
+}
+}
