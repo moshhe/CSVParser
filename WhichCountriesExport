@@ -36,7 +36,7 @@ public class WhichCountriesExport {
         for (CSVRecord record: parser){
             String exports = record.get("Exports");
             if(exports.contains(export1)){
-                match=match+0.5;
+                match=match+0.5; 
             }
             if(exports.contains(export2)){
                 match=match+0.5;
