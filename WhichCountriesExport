@@ -2,8 +2,8 @@
 /**
  * Checks to see which countries export which goods with loops
  * 
- * @monasia (your name) 
- * @0.1.0 (a version number or a date)
+ * @moshhe
+ * @0.9.0 (a version number or a date)
  */
 import edu.duke.*;
 import org.apache.commons.csv.*;
