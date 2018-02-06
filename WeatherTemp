@@ -1,0 +1,52 @@
+import edu.duke.*;
+import org.apache.commons.csv.*;
+
+public class coldestFile {
+    public CSVRecord coldestHour(CSVParser parser){
+        CSVRecord smallest = null;
+        for(CSVRecord currRow : parser){
+            if(smallest == null){
+                smallest = currRow;
+            }
+
+            else{
+                double currTemp = Double.parseDouble(currRow.get("TemperatureF"));
+                double smallestTemp = Double.parseDouble(smallest.get("TemperatureF"));
+                if(currTemp == -9999){
+                    continue;
+                }
+
+                if(currTemp < smallestTemp){
+                    smallest = currRow;
+                }
+            }
+        }
+        return smallest;
+    }
+    
+    public void testColdest(){
+     FileResource fr = new FileResource();
+     CSVParser parser = fr.getCSVParser();
+     CSVRecord coldest = coldestHour(parser);
+     System.out.println(coldest);
+    }
+    
+    public CSVRecord lowestHumidity(CSVParser parser){
+        CSVRecord smallest = null;
+        for(CSVRecord currRow : parser){
+            if(smallest == null){
+                smallest = currRow;
+            }
+
+            else{
+                double smallestHumidity = Double.parseDouble(currRow.get("Humidity"));
+            }
+        }
+        return smallest;
+    }
+   // public CSVRecord coldestManyDays(){
+        CSVRecord smallest = null;
+        DirectoryResource dr = new DirectoryResource();
+        String file = "";
+        
+}
